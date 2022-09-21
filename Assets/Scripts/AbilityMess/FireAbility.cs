@@ -7,6 +7,6 @@ public class FireAbility : AAbility
 {
     public override void Use(Character character)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

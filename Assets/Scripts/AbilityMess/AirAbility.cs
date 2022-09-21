@@ -7,6 +7,6 @@ public class AirAbility : AAbility
 {
     public override void Use(Character character)
     {
-        throw new System.NotImplementedException();
+        Instantiate(projectile, character.transform);
     }
 }
