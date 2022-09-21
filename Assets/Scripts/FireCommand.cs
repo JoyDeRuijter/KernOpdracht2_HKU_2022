@@ -4,9 +4,24 @@ using UnityEngine;
 
 public class FireCommand : ICommand
 {
+    private ProjectileLauncher projectileLauncher;
+    private Projectile projectile;
+    private int ID = 3;
+
+    public FireCommand(ProjectileLauncher _projectileLauncher, Projectile _projectile)
+    {
+        projectileLauncher = _projectileLauncher;
+        projectile = _projectile;
+    }
+
     public void Execute()
     {
+        FireAbility();
+    }
+
+    private void FireAbility()
+    {
         Debug.Log("Executes the fire ability");
-        // Execute fire ability
+        projectileLauncher.StartProjectile(projectile, ID);
     }
 }

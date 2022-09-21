@@ -6,7 +6,6 @@ using UnityEngine.Pool;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float damage;
-
     [SerializeField] private Vector3 speed;
 
     private IObjectPool<Projectile> projectilePool;

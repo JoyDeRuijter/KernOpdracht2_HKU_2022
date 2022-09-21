@@ -7,7 +7,8 @@ using UnityEngine.Pool;
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    [SerializeField] private Projectile projectilePrefab;
+    private Projectile projectilePrefab;
+    private int currentProjectileID, lastProjectileID;
     private IObjectPool<Projectile> projectilePool;
 
     private void Awake()
@@ -17,25 +18,24 @@ public class ProjectileLauncher : MonoBehaviour
             OnGet,
             OnRelease,
             OnDelete,
-            maxSize: 5 
+            maxSize: 8 
             );
     }
 
-    private void Update()
+    public void StartProjectile(Projectile _projectile, int _ID)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            projectilePool.Get();
-    }
+        lastProjectileID = currentProjectileID;
+        currentProjectileID = _ID;
+        if (currentProjectileID != lastProjectileID)
+            projectilePool.Clear();
 
-    public void StartProjectile(Projectile _projectile)
-    { 
         projectilePrefab = _projectile;
         projectilePool.Get();
     }
 
     private Projectile CreateProjectile()
     { 
-        Projectile projectile = Instantiate(projectilePrefab);
+        Projectile projectile = Instantiate(projectilePrefab, this.transform);
         projectile.SetPool(projectilePool);
         return projectile;
     }
