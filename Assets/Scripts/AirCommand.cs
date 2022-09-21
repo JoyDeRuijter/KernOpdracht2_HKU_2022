@@ -6,7 +6,6 @@ public class AirCommand : ICommand
 {
     private ProjectileLauncher projectileLauncher;
     private Projectile projectile;
-    private int ID = 4;
 
     public AirCommand(ProjectileLauncher _projectileLauncher, Projectile _projectile)
     {
@@ -22,6 +21,6 @@ public class AirCommand : ICommand
     private void AirAbility()
     {
         Debug.Log("Executes the air ability");
-        projectileLauncher.StartProjectile(projectile, ID);
+        projectileLauncher.StartProjectile(projectile, 4);
     }
 }

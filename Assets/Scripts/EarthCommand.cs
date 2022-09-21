@@ -6,7 +6,6 @@ public class EarthCommand : ICommand
 {
     private ProjectileLauncher projectileLauncher;
     private Projectile projectile;
-    private int ID = 2;
 
     public EarthCommand(ProjectileLauncher _projectileLauncher, Projectile _projectile)
     {
@@ -22,6 +21,6 @@ public class EarthCommand : ICommand
     private void EarthAbility()
     {
         Debug.Log("Executes the earth ability");
-        projectileLauncher.StartProjectile(projectile, ID);
+        projectileLauncher.StartProjectile(projectile, 2);
     }
 }

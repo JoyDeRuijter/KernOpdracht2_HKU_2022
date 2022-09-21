@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
         transform.position += speed * Time.deltaTime;
     }
 
+    // When the projectile leaves the screen, release it from the projectilepool
     private void OnBecameInvisible()
     {
         projectilePool.Release(this);

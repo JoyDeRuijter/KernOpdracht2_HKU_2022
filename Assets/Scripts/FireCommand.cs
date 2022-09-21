@@ -6,7 +6,6 @@ public class FireCommand : ICommand
 {
     private ProjectileLauncher projectileLauncher;
     private Projectile projectile;
-    private int ID = 3;
 
     public FireCommand(ProjectileLauncher _projectileLauncher, Projectile _projectile)
     {
@@ -22,6 +21,6 @@ public class FireCommand : ICommand
     private void FireAbility()
     {
         Debug.Log("Executes the fire ability");
-        projectileLauncher.StartProjectile(projectile, ID);
+        projectileLauncher.StartProjectile(projectile, 3);
     }
 }

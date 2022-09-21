@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private KeyCode WaterAbilityKey;
-    [SerializeField] private KeyCode EarthAbilityKey;
-    [SerializeField] private KeyCode FireAbilityKey;
-    [SerializeField] private KeyCode AirAbilityKey;
+    [SerializeField] private KeyCode WaterAbilityKey = KeyCode.Q;
+    [SerializeField] private KeyCode EarthAbilityKey = KeyCode.W;
+    [SerializeField] private KeyCode FireAbilityKey = KeyCode.E;
+    [SerializeField] private KeyCode AirAbilityKey = KeyCode.R;
 
     private Projectile waterProjectile, earthProjectile, fireProjectile, airProjectile;
 
@@ -28,6 +28,7 @@ public class Character : MonoBehaviour
         inputHandler.HandleInput();
     }
 
+    // Load the projectile prefabs from the Resources folder
     private void LoadProjectiles()
     {
         waterProjectile = (Resources.Load("WaterProjectile") as GameObject).GetComponent<Projectile>();
@@ -36,10 +37,11 @@ public class Character : MonoBehaviour
         airProjectile = (Resources.Load("AirProjectile") as GameObject).GetComponent<Projectile>();
     }
 
+    // Bind all commands to the chosen keys
     private void BindAllKeys()
     {
         inputHandler.BindInput(WaterAbilityKey,
-        new WaterCommand(launcher, waterProjectile));
+            new WaterCommand(launcher, waterProjectile));
         inputHandler.BindInput(EarthAbilityKey,
             new EarthCommand(launcher, earthProjectile));
         inputHandler.BindInput(FireAbilityKey,
