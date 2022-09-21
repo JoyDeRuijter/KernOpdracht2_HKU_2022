@@ -1,31 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Projectile : MonoBehaviour
 {
-    private float damage;
-    public float Damage
-    { 
-        get { return damage; }
-        set { damage = value; }
-    }
+    [SerializeField] private float damage;
 
-    private float speed;
-    public float Speed
-    {
-        get { return speed; }
-        set { speed = value; }
-    }
+    [SerializeField] private Vector3 speed;
+
+    private IObjectPool<Projectile> projectilePool;
 
     private void Update()
     {
-        Vector3 newPosition = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-        transform.position += newPosition * Time.deltaTime;
+        transform.position += speed * Time.deltaTime;
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        projectilePool.Release(this);
+    }
+
+    public void SetPool(IObjectPool<Projectile> _projectilePool)
+    {
+        projectilePool = _projectilePool;
     }
 }

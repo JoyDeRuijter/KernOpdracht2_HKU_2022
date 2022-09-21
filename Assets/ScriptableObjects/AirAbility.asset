@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65bbcd4be00745488879812b6feddbb, type: 3}
   m_Name: AirAbility
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  speed: 0
+  projectile: {fileID: 164684966258903571, guid: f9bde62352c326245babbc2936c962ba, type: 3}
+  speed: 4
+  damage: 10
